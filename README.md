@@ -1,4 +1,5 @@
 Text-Classification-with-Movie-Reviews 🎬
+
 Overview
 This repository contains a Deep Learning model built with TensorFlow and Keras that classifies movie reviews as either positive or negative. It utilizes Transfer Learning by implementing a pre-trained word embedding model from TensorFlow Hub to process raw text, making it highly efficient and lightweight.
 
