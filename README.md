@@ -1,5 +1,6 @@
-# Text-Classification-with-Movie-Reviews 🎬
-Text Classification Model for Movie Reviews | Python, TensorFlow, Keras  Engineered a binary sentiment classifier to analyze 50,000 IMDB movie reviews, achieving an 88% predictive accuracy.  Constructed an automated NLP pipeline utilizing TensorFlow Hub pre-trained word embeddings to translate raw text into scalable numerical representations.
+Text-Classification-with-Movie-Reviews 🎬
+Overview
+This repository contains a Deep Learning model built with TensorFlow and Keras that classifies movie reviews as either positive or negative. It utilizes Transfer Learning by implementing a pre-trained word embedding model from TensorFlow Hub to process raw text, making it highly efficient and lightweight.
 
 Model Architecture
 The neural network acts as a "funnel," compressing 50-dimensional word embeddings down to a single binary prediction:
@@ -8,7 +9,7 @@ Embedding Layer: google/nnlm-en-dim50/2 (TensorFlow Hub). Maps raw text into 50-
 
 Hidden Layer: A Dense layer with 16 units and a ReLU activation function to learn non-linear patterns.
 
-Output Layer: A Dense layer with 1 unit (no activation, outputs raw logits) to predict the final binary sentiment.
+Output Layer: A Dense layer with 1 unit (no activation, outputs raw logits) to predict the final binary classification.
 
 Dataset
 Trained on the IMDB Reviews Dataset via tensorflow_datasets.
@@ -46,8 +47,8 @@ os.environ["TF_USE_LEGACY_KERAS"] = "1"
 import tensorflow as tf
 import tensorflow_hub as hub
 
-# Load your saved model (assuming you saved it as 'sentiment_model')
-# model = tf.keras.models.load_model('sentiment_model')
+# Load your saved model (assuming you saved it as 'classification_model')
+# model = tf.keras.models.load_model('classification_model')
 
 custom_reviews = [
     "An absolute joy to watch from start to finish. Breathtaking!",
@@ -61,8 +62,8 @@ predictions = model.predict(custom_data)
 # Interpret results
 for i in range(len(custom_reviews)):
     score = tf.sigmoid(predictions[i][0]).numpy()
-    sentiment = "POSITIVE" if score >= 0.5 else "NEGATIVE"
-    print(f"Review: {custom_reviews[i]}\nVerdict: {sentiment} ({score*100:.2f}% confidence)\n")
+    prediction = "POSITIVE" if score >= 0.5 else "NEGATIVE"
+    print(f"Review: {custom_reviews[i]}\nVerdict: {prediction} ({score*100:.2f}% confidence)\n")
 Model Performance
 Test Accuracy: ~85.7%
 
